@@ -1,0 +1,71 @@
+<form [formGroup]= "formulario" action="">
+  
+    <h1>ATUALIZANDO LIVRO</h1>
+    
+    <mat-form-field class="form">
+        <mat-label>Título</mat-label>
+        <input matInput [(ngModel)]="livro.titulo" formControlName ="titulo" required type="text" name="titulo" placeholder="Ex. Java - Como Programar" maxlength="100"/>
+  
+      <mat-error *ngIf="formulario.get('titulo')?.invalid">
+          
+        <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('titulo')?.errors?.['required'] && formulario.get('titulo')?.touched" >
+          O campo Título é obrigatorio
+  
+        </mat-error>
+  
+        <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('titulo')?.errors?.['minlength']">
+          O campo Título deve conter entre 3 e 100 caracteres
+            
+        </mat-error>
+        
+      </mat-error>
+  
+    </mat-form-field>
+  
+  
+    <mat-form-field class="form">
+      <mat-label>Nome do Autor</mat-label>
+      <input matInput [(ngModel)]="livro.nomeAutor" formControlName = "nomeAutor" required type="text" name="nomeAutor" placeholder="Ex. Paul Deitel" maxlength="100"/>
+  
+      <mat-error *ngIf="formulario.get('nomeAutor')?.invalid">
+          <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('nomeAutor')?.errors?.['required'] && formulario.get('nomeAutor')?.touched">
+            O campo Nome é obrigatorio
+      
+          </mat-error>
+  
+          <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('nomeAutor')?.errors?.['minlength']">
+            O campo Nome deve conter entre 3 e 100 caracteres
+              
+          </mat-error>
+            
+      </mat-error>
+            
+    </mat-form-field>
+    
+    <mat-form-field class="form">
+      <mat-label>Texto</mat-label>
+      <textarea matInput [(ngModel)]="livro.texto" formControlName="texto" required type="text" name="texto" placeholder="Ex. lorem ipsum" maxlength="2000000"></textarea>
+        
+      <mat-error *ngIf="formulario.get('texto')?.invalid">
+        <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('texto')?.errors?.['required'] && formulario.get('texto')?.touched">
+          O campo Texto é obrigatorio
+      
+        </mat-error>
+  
+        <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('texto')?.errors?.['minlength']">
+          O campo Texto deve conter entre 10 e 2.000.000 catacteres
+              
+        </mat-error>
+            
+      </mat-error>
+          
+    </mat-form-field>
+  
+    <div class="buttons">
+      <button  (click)="update()" [disabled]="formulario.invalid" class="mat-elevation-z8" mat-stroked-button color="primary">ATUALIZAR</button>
+      <button (click)="cancel()" class="mat-elevation-z8" mat-stroked-button color="warn">CANCELAR</button>
+    </div>
+    
+  </form>
+    
+  
