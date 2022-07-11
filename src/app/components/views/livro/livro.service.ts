@@ -45,6 +45,12 @@ export class LivroService {
 
   }
 
+  delete(id : String): Observable<void>{
+    const url = `${this.baseUrl}/livros/${id}`;
+    return this.http.delete<void>(url);
+
+  }
+
   mensagem(str: String) : void{
     this.snack.open(
       `${str}`,'OK', {
