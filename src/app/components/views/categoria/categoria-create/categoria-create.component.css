@@ -1,15 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 form{
     text-align: center;
     width: 70%;
     margin: 2rem auto 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1{
     font-size: 2rem;
     font-weight: 500;
     margin-bottom: 3rem;
+    color: rgb(212, 207, 207);
+    
+    
 }
 
+button{
+    margin-right: .5rem;
+    margin-top: .8rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    transition: 0.3s;
+    
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
+}
+  
 .form{
     width: 100%;
 
@@ -20,8 +40,19 @@ h1{
     text-align: start;
 }
 
-button{
-    margin-right: .5rem;
-    padding-right: 2rem;
-    padding-left: 2rem;
+.nao-pode-selecionar {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+	user-select: none;
+}
+
+.btnConfirmar:enabled{
+    background-color: blueviolet;
+    color: white;
+}
+
+.btnCancelar:hover{
+    background-color: rgb(223, 37, 37);
+    color: white;
 }

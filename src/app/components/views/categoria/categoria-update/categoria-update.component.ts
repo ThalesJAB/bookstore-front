@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Categoria } from "../categoria.model";
 import { CategoriaService } from "../categoria.service";
@@ -14,15 +15,24 @@ export class CategoriaUpdateComponent implements OnInit {
     nome: "",
     descricao: "",
   };
+
+  formulario! : FormGroup;
   constructor(
     private service: CategoriaService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.categoria.id = this.route.snapshot.paramMap.get("id")!;
     this.findById();
+
+    this.formulario = this.formBuilder.group({
+        nome: ["", [Validators.minLength(3), Validators.maxLength(100), Validators.required]],
+        descricao: ["", [Validators.minLength(3), Validators.maxLength(200), Validators.required]]
+      });
+
   }
 
   findById(): void {
@@ -45,12 +55,7 @@ export class CategoriaUpdateComponent implements OnInit {
       },
 
       error: (err) => {
-        /*
-        for (let i = 0; i < err.error.erros.length; i++) {
-          this.service.mensagem(err.error.erros[i].message);
-        }
-        */
-       this.service.mensagem("Validar se todos os campos estão preenchidos corretamente!")
+       this.service.mensagem("Erro ao atualizar categoria. Tente novamente mais tarde!")
       },
     });
   }

@@ -1,20 +1,48 @@
-<form action="">
+<form [formGroup]="formulario" action="">
     <h1>ATUALIZANDO CATEGORIA</h1>
   
     <mat-form-field class="form">
       <mat-label>Nome</mat-label>
-      <input matInput [(ngModel)]="categoria.nome" type="text" name="nome" placeholder="Ex. Computação"/>
+      <input matInput [(ngModel)]="categoria.nome" type="text" name="nome" formControlName = "nome" placeholder="Ex. Computação"/>
+
+      <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('nome')?.invalid">
+        
+        <mat-error *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched" >
+          O campo Nome é obrigatorio
+  
+        </mat-error>
+  
+        <mat-error *ngIf="formulario.get('nome')?.errors?.['minlength']">
+          O campo Nome deve conter entre 3 e 100 caracteres
+            
+        </mat-error>
+        
+      </mat-error>
     </mat-form-field>
   
     <mat-form-field class="form">
       <mat-label>Descrição</mat-label>
-      <textarea matInput [(ngModel)]="categoria.descricao" type="text" name="descricao" placeholder="Ex. Livros de Computação"></textarea>
+      <textarea matInput [(ngModel)]="categoria.descricao" type="text" name="descricao" formControlName = "descricao" placeholder="Ex. Livros de Computação"></textarea>
+
+      <mat-error *ngIf="formulario.get('descricao')?.invalid">
+        
+        <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('descricao')?.errors?.['required'] && formulario.get('descricao')?.touched" >
+          O campo Descrição é obrigatorio
+  
+        </mat-error>
+  
+        <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('descricao')?.errors?.['minlength']">
+          O campo Descrição deve conter entre 3 e 200 caracteres
+            
+        </mat-error>
+        
+      </mat-error>
     </mat-form-field>
   
   
     <div class="buttons">
-      <button (click)="update()" class="mat-elevation-z8" mat-stroked-button color="primary">ATUALIZAR</button>
-      <button (click)="cancel()" class="mat-elevation-z8" mat-stroked-button color="warn">CANCELAR</button>
+      <button (click)="update()" class="mat-elevation-z8 btnConfirmar" mat-stroked-button color="primary">ATUALIZAR</button>
+      <button (click)="cancel()" class="mat-elevation-z8 btnCancelar" mat-stroked-button color="warn">CANCELAR</button>
     </div>
   </form>
   

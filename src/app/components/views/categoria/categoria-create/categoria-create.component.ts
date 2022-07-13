@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { ConnectableObservable } from "rxjs";
 import { Categoria } from "../categoria.model";
 import { CategoriaService } from "../categoria.service";
 
@@ -10,13 +10,22 @@ import { CategoriaService } from "../categoria.service";
   styleUrls: ["./categoria-create.component.css"],
 })
 export class CategoriaCreateComponent implements OnInit {
+
   categoria: Categoria = {
     nome: "",
     descricao: "",
   };
-  constructor(private service: CategoriaService, private router: Router) {}
 
-  ngOnInit(): void {}
+  formulario! : FormGroup;
+
+  constructor(private service: CategoriaService, private router: Router, private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      nome: ["", [Validators.minLength(3), Validators.maxLength(100), Validators.required]],
+      descricao: ["", [Validators.minLength(3), Validators.maxLength(200), Validators.required]]
+    });
+  }
 
 
   create(): void {
@@ -27,9 +36,8 @@ export class CategoriaCreateComponent implements OnInit {
       },
 
       error: (err) => {
-        for (let i = 0; i < err.error.erros.length; i++) {
-          this.service.mensagem(err.error.erros[i].message);
-        }
+        this.router.navigate(["categorias"]);
+        this.service.mensagem("Erro ao criar categoria. Tente novamente mais tarde!")
       },
     });
   }
