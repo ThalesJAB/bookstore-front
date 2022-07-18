@@ -25,6 +25,13 @@ button{
     
 }
 
+textarea{
+    height: 59px;
+    outline: none !important;
+    resize: none !important;
+    max-height: 470px;
+}
+
 ::ng-deep .mat-focused .mat-form-field-label {
     /*change color of label*/
     color: white !important;

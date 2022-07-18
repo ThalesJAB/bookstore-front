@@ -21,6 +21,13 @@ button{
     transition: 0.3s;
 }
 
+textarea{
+    height: 59px;
+    outline: none !important;
+    resize: none !important;
+    max-height: 470px;
+}
+
 .form{
     width: 100%;
 
