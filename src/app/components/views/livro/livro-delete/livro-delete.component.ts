@@ -1,5 +1,6 @@
 
-import { Component, OnInit } from "@angular/core";
+import { CdkTextareaAutosize } from "@angular/cdk/text-field";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, Route, Router } from "@angular/router";
 import { Livro } from "../livro.model";
 import { LivroService } from "../livro.service";
@@ -19,6 +20,7 @@ export class LivroDeleteComponent implements OnInit {
     nomeAutor: "",
     texto: "",
   };
+  @ViewChild('autosize') autosize!: CdkTextareaAutosize;
   
   constructor(
     private service: LivroService,
@@ -42,8 +44,6 @@ export class LivroDeleteComponent implements OnInit {
       error: (err) =>{
         this.service.mensagem("Livro não encontrado!");
       }
-
-
 
     });
   }

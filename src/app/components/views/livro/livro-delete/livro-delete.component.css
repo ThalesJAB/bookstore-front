@@ -15,6 +15,13 @@ h1{
     
 }
 
+textarea{
+    height: auto ;
+    outline: none !important;
+    resize: none !important;
+    max-height: 470px;
+}
+
 .form{
     width: 100%;
 
@@ -30,6 +37,11 @@ button{
     padding-right: 2rem;
     padding-left: 2rem;
     transition: 0.3s;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
 }
 
 .nao-pode-selecionar {
@@ -48,3 +60,26 @@ button{
     background-color: rgb(223, 37, 37);
     color: white;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 30px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 30px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+
+  }

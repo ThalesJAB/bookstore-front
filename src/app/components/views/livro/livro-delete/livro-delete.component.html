@@ -19,7 +19,7 @@
     
     <mat-form-field class="form">
       <mat-label>Texto</mat-label>
-      <textarea matInput [(ngModel)]="livro.texto" type="text" name="texto" disabled></textarea>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" [(ngModel)]="livro.texto" type="text" name="texto" readonly></textarea>
           
     </mat-form-field>
   
