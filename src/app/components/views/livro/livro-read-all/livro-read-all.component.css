@@ -26,14 +26,26 @@ button{
     color: rgb(206, 173, 24);
 }
 
+.edit:hover{
+    color:white
+}
+
 .livros{
     color: rgb(17, 125, 240);
     margin-left: .3rem;
 }
 
+.livros:hover{
+    color: white;
+}
+
 .delete{
     color: rgb(228, 56, 56);
     margin-left: .5rem;
+}
+
+.delete:hover{
+    color: white;
 }
 
 .mat-header{

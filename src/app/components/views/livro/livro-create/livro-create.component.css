@@ -1,14 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 form{
     text-align: center;
     width: 70%;
     margin: 2rem auto 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1{
     font-size: 2rem;
     font-weight: 500;
     margin-bottom: 3rem;
+    color: rgb(212, 207, 207);
 }
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
+}
+
+
 
 .form{
     width: 100%;
@@ -24,6 +34,7 @@ button{
     margin-right: .5rem;
     padding-right: 2rem;
     padding-left: 2rem;
+    transition: 0.3s;
 }
 
 .nao-pode-selecionar {
@@ -32,3 +43,45 @@ button{
     -ms-user-select: none;
 	user-select: none;
 }
+
+.btnConfirmar:enabled{
+    background-color: blueviolet;
+    color: white;
+}
+
+.btnCancelar:hover{
+    background-color: rgb(223, 37, 37);
+    color: white;
+}
+
+/* TESTES */
+
+textarea{
+    height: 59px ;
+    outline: none;
+    resize: none !important;
+    max-height: 470px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 30px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 30px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+
+  }

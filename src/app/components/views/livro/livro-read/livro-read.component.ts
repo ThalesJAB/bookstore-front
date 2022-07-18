@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { CdkTextareaAutosize } from "@angular/cdk/text-field";
+import { Component, NgZone, OnInit, ViewChild } from "@angular/core";
+
 import { ActivatedRoute, Router } from "@angular/router";
 import { Livro } from "../livro.model";
 import { LivroService } from "../livro.service";
@@ -17,10 +19,15 @@ export class LivroReadComponent implements OnInit {
     nomeAutor: "",
     texto: "",
   };
+
+  @ViewChild('autosize') autosize!: CdkTextareaAutosize;
+  
+
   constructor(
     private service: LivroService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _ngZone: NgZone
   ) {}
 
   ngOnInit(): void {
@@ -41,13 +48,16 @@ export class LivroReadComponent implements OnInit {
         this.service.mensagem("Livro não encontrado!");
       }
 
-
-
     });
   }
 
   cancel():void{
     this.router.navigate([`categorias/${this.id_cat}/livros`]);
+  }
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this._ngZone.onStable.pipe().subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
 }

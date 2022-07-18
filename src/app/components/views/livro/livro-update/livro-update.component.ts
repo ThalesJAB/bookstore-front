@@ -1,5 +1,6 @@
+import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import { ThisReceiver } from "@angular/compiler";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import {
   Form,
   FormBuilder,
@@ -27,6 +28,9 @@ export class LivroUpdateComponent implements OnInit {
     texto: "",
   };
   formulario!: FormGroup;
+
+  @ViewChild('autosize') autosize!: CdkTextareaAutosize;
+  
   constructor(
     private formBuilder: FormBuilder,
     private service: LivroService,
@@ -84,6 +88,10 @@ export class LivroUpdateComponent implements OnInit {
   cancel():void{
     this.router.navigate([`categorias/${this.id_cat}/livros`]);
   }
+
+
+
+  
 }
 
 

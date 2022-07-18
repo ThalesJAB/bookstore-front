@@ -44,8 +44,7 @@
   
   <mat-form-field class="form">
     <mat-label>Texto</mat-label>
-    <textarea matInput [(ngModel)]="livro.texto" formControlName="texto" required type="text" name="texto" placeholder="Ex. lorem ipsum" maxlength="2000000"></textarea>
-      
+    <textarea matInput (keyup)="configText()"  [(ngModel)]="livro.texto" formControlName="texto" required type="text" name="texto" placeholder="Ex. lorem ipsum" maxlength="2000000" #textarea></textarea> 
     <mat-error *ngIf="formulario.get('texto')?.invalid">
       <mat-error class="nao-pode-selecionar" *ngIf="formulario.get('texto')?.errors?.['required'] && formulario.get('texto')?.touched">
         O campo Texto é obrigatorio
@@ -58,13 +57,14 @@
       </mat-error>
           
     </mat-error>
-        
+
   </mat-form-field>
 
   <div class="buttons">
-    <button (click)="create()" [disabled]="formulario.invalid" class="mat-elevation-z8" mat-stroked-button color="primary">CRIAR</button>
-    <button (click)="cancel()" class="mat-elevation-z8" mat-stroked-button color="warn">CANCELAR</button>
+    <button (click)="create()" [disabled]="formulario.invalid" class="mat-elevation-z8 btnConfirmar" mat-stroked-button color="primary">CRIAR</button>
+    <button (click)="cancel()" class="mat-elevation-z8 btnCancelar" mat-stroked-button color="warn">CANCELAR</button>
   </div>
-  
+
 </form>
+
   
